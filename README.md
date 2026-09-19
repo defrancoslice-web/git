@@ -31,6 +31,11 @@ python -m disaster_agent.cli serve       # 3. 打开可视化界面 http://127.0
 日常改动提交到 `develop`；确认可用、跑通 `python tests/test_pipeline.py` 之后，
 再合并回 `main`、更新 `VERSION` 并打新版本号。
 
+团队分工与执行节奏见 `docs/` 目录：
+
+- `docs/项目计划.md` —— 里程碑、任务清单、关键路径与风险
+- `docs/协作框架.md` —— 角色划分、文件所有权、接口冻结、交付标准
+
 其它命令：
 
 ```bash
