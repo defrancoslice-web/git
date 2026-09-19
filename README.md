@@ -1,4 +1,4 @@
-# 自然灾害灾情数据自动化综合分析辅助决策支撑平台（原型骨架）
+# 自然灾害灾情数据自动化综合分析辅助决策支撑平台
 
 面向「安全与应急创新」赛项四川省减灾中心企业命题的可运行原型。
 五个模块全部跑通：**数据接入清洗 → 多维多层级分析 → 可视化 → 报告生成**，
@@ -17,7 +17,19 @@ python run_demo.py                       # 2. 一键跑通并打印执行轨迹
 python -m disaster_agent.cli serve       # 3. 打开可视化界面 http://127.0.0.1:8000
 ```
 
-当前版本：**Beta 0.2.0**（详见 `CHANGELOG.md` 与 `使用说明.md`）。
+当前版本：**Beta 0.5.1**。Windows 上最省事的方式是双击根目录的 `启动.bat`
+（或先跑一次 `创建桌面快捷方式.bat`，之后双击桌面图标即可）。
+完整操作手册见 `使用说明.md`，版本变更见 `CHANGELOG.md`。
+
+## 分支约定
+
+| 分支 | 用途 |
+| --- | --- |
+| `main` | 稳定分支。只接收跑通自检的合并，用于打包发版 |
+| `develop` | 日常开发分支。新功能、修 bug 都先提交到这里 |
+
+日常改动提交到 `develop`；确认可用、跑通 `python tests/test_pipeline.py` 之后，
+再合并回 `main`、更新 `VERSION` 并打新版本号。
 
 其它命令：
 
@@ -25,7 +37,7 @@ python -m disaster_agent.cli serve       # 3. 打开可视化界面 http://127.0
 python -m disaster_agent.cli run --agent          # 命令行跑通，附智能体轨迹与清洗日志
 python -m disaster_agent.cli ask "近五年洪涝灾害直接经济损失趋势"
 python -m disaster_agent.cli catalog               # 查看可用维度与指标
-python tests/test_pipeline.py                      # 端到端自检（7 项）
+python tests/test_pipeline.py                      # 端到端自检（9 项）
 ```
 
 ## 设计要点
