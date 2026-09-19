@@ -1,0 +1,71 @@
+{
+  "note": "图型选择规则表：由维度类型和基数决定图型，模型只在候选里挑，不自由造图。priority 越大越先匹配。",
+  "rules": [
+    {
+      "id": "region_choropleth",
+      "priority": 88,
+      "requires_geo": true,
+      "when": {"has_region_dimension": true, "dimension_count": 1},
+      "result": "choropleth",
+      "label": "空间分布类-分级着色图",
+      "why": "单一区域维度且已安装行政区划边界文件，用分级着色图呈现空间分布"
+    },
+    {
+      "id": "trend_line",
+      "priority": 90,
+      "when": {"has_temporal_dimension": true, "dimension_count": 2},
+      "result": "trend_line",
+      "label": "趋势类-多系列折线图",
+      "why": "一个时间维度加一个分类维度，用于展示不同类别随时间的变化趋势"
+    },
+    {
+      "id": "trend_area",
+      "priority": 80,
+      "when": {"has_temporal_dimension": true, "dimension_count": 1},
+      "result": "trend_area",
+      "label": "趋势类-面积图",
+      "why": "单一时间维度的总量走势，面积图强调累积规模"
+    },
+    {
+      "id": "loss_structure_donut",
+      "priority": 85,
+      "when": {"has_virtual_dimension": true, "dimension_count": 1},
+      "result": "structure_donut",
+      "label": "占比类-环形图",
+      "why": "损失结构为部分与整体的关系，适合环形图"
+    },
+    {
+      "id": "region_choropleth",
+      "priority": 70,
+      "when": {"has_region_dimension": true, "region_level": [3, 4], "dimension_count": 1},
+      "result": "region_rank_bar",
+      "label": "空间分布类-分级排序条形图",
+      "why": "缺少行政区划边界文件时，用排序条形图代替分级着色图；接入 GeoJSON 后可切换 choropleth"
+    },
+    {
+      "id": "compare_bar",
+      "priority": 40,
+      "when": {"dimension_count": 1},
+      "result": "compare_bar",
+      "label": "对比类-柱状图",
+      "why": "单一分类维度的横向对比"
+    },
+    {
+      "id": "matrix_bubble",
+      "priority": 60,
+      "when": {"dimension_count": 2, "has_temporal_dimension": false, "has_virtual_dimension": false},
+      "result": "matrix_heatmap",
+      "label": "自定义图表-矩阵热力图",
+      "why": "两个分类维度交叉，用矩阵热力图呈现强度分布"
+    }
+  ],
+  "default": {
+    "result": "compare_bar",
+    "label": "对比类-柱状图",
+    "why": "未命中任何规则时的兜底图型"
+  },
+  "palette": ["#d94b3f", "#e8871e", "#d9a827", "#6f9a3c", "#3f8f8a", "#4a6fa5", "#a35d8f", "#7d6a5b"],
+  "geo_palette": ["#ffe8d6", "#fdc9a9", "#fb9a72", "#f4623a", "#d92d1c", "#9e0f10"],
+  "palette_note": "主色板偏暖，以红橙为主、保留冷色用于多系列区分；geo_palette 为空间分布图的红色分级刻度。",
+  "geo_note": "choropleth（分级着色图）与 spatial_heatmap（热力图）需要 data/geo/ 下的行政区划边界文件；缺失时自动降级为排序条形图。"
+}

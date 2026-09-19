@@ -1,0 +1,37 @@
+{
+  "title": "自然灾害灾情综合分析报告",
+  "subtitle": "基于灾情数据的自动化多维分析",
+  "sections": [
+    {
+      "id": "overview",
+      "title": "一、灾情总体概况",
+      "generator": "overview",
+      "slots": ["记录条数", "统计时段", "涉及灾种数", "覆盖行政区数", "受灾人口", "直接经济损失"]
+    },
+    {
+      "id": "spatiotemporal",
+      "title": "二、灾情时空分布特征",
+      "generator": "spatiotemporal",
+      "slots": ["分时段趋势", "分区域分布", "高发时段"]
+    },
+    {
+      "id": "by_disaster_type",
+      "title": "三、分灾种灾情分析",
+      "generator": "by_disaster_type",
+      "slots": ["各灾种发生频次", "各灾种损失规模", "主导灾种"]
+    },
+    {
+      "id": "loss_structure",
+      "title": "四、损失情况分析",
+      "generator": "loss_structure",
+      "slots": ["人员伤亡", "直接经济损失构成", "单次事件平均损失"]
+    },
+    {
+      "id": "conclusion",
+      "title": "五、结论与建议",
+      "generator": "conclusion",
+      "slots": ["主要结论", "应急管理建议", "数据质量说明"]
+    }
+  ]
+}
+

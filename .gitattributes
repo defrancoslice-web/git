@@ -1,0 +1,22 @@
+# 换行符与编码处理
+#
+# 注意：根目录下的 .bat 文件是 GBK 编码 + CRLF 换行（中文版 Windows 的 cmd
+# 无法可靠解析 UTF-8 批处理文件）。这里禁止 git 对其做任何转换，
+# 否则别人克隆下来会出现乱码或无法执行。
+*.bat -text
+*.ps1 text eol=crlf
+
+*.py   text eol=lf
+*.json text eol=lf
+*.md   text eol=lf
+*.html text eol=lf
+*.txt  text eol=lf
+*.csv  text eol=lf
+
+# 二进制文件
+*.xlsx binary
+*.png  binary
+*.jpg  binary
+*.pdf  binary
+*.docx binary
+*.zip  binary

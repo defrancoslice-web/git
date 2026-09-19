@@ -1,0 +1,41 @@
+{
+  "date_formats": [
+    "%Y-%m-%d", "%Y/%m/%d", "%Y.%m.%d", "%Y年%m月%d日", "%Y年%m月", "%Y%m%d", "%Y-%m", "%Y/%m", "%Y"
+  ],
+  "unit_conversion": {
+    "direct_economic_loss": {"亿元": 10000.0, "万元": 1.0, "元": 0.0001},
+    "infrastructure_loss":  {"亿元": 10000.0, "万元": 1.0, "元": 0.0001},
+    "agriculture_loss":     {"亿元": 10000.0, "万元": 1.0, "元": 0.0001},
+    "housing_loss":         {"亿元": 10000.0, "万元": 1.0, "元": 0.0001},
+    "affected_crop_area":   {"千公顷": 1.0, "公顷": 0.001, "万亩": 0.666666, "亩": 0.0000666667},
+    "destroyed_crop_area":  {"千公顷": 1.0, "公顷": 0.001, "万亩": 0.666666, "亩": 0.0000666667},
+    "deaths":               {"人": 1.0, "万人": 10000.0},
+    "injured":              {"人": 1.0, "万人": 10000.0},
+    "missing":              {"人": 1.0, "万人": 10000.0},
+    "affected_population":  {"人": 1.0, "万人": 10000.0},
+    "evacuated":            {"人": 1.0, "万人": 10000.0}
+  },
+  "missing": {
+    "numeric_policy": "zero_with_flag",
+    "region_policy": "drop_row",
+    "time_policy": "drop_row",
+    "categorical_policy": "fill_其他"
+  },
+  "outlier": {
+    "method": "iqr",
+    "iqr_factor": 1.5,
+    "action": "cap",
+    "min_group_size": 8
+  },
+  "dedupe_on": ["disaster_type", "occur_date", "province", "city", "county", "town", "village"],
+  "hierarchy": {
+    "check_code_prefix": true,
+    "check_name_against_reference": true,
+    "reference_file": "data/reference/regions.json",
+    "action": "flag"
+  },
+  "season_rule": {"flood_season_months": [5, 6, 7, 8, 9]},
+  "per_capita_loss_bins": [0, 0.5, 2, 10, 50, 100000],
+  "per_capita_loss_labels": ["低于0.5万元", "0.5-2万元", "2-10万元", "10-50万元", "50万元以上"]
+}
+

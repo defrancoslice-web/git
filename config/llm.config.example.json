@@ -1,0 +1,6 @@
+{
+  "_说明": "把本文件复制为 llm.local.json 并填入真实密钥。llm.local.json 已被 .gitignore 忽略，不会进入分发包。",
+  "api_key": "sk-在此填入你的密钥",
+  "base_url": "https://api.deepseek.com/v1",
+  "model": "deepseek-chat"
+}
